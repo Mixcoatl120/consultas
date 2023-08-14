@@ -1,0 +1,34 @@
+/* Custom styles for the web application */
+body {
+    background-color: #f8f9fa; /* Change the background color */
+    color: #333; /* Change the text color */
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+/* Add some styling to the main content */
+h1 {
+    color: #007bff; /* Change the heading color */
+}
+
+p {
+    font-size: 18px;
+}
+
+/* Style buttons */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
