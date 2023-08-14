@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 
-{% block title %}Home - {{ super() }}{% endblock %}
+{% block title %}home - {{ super() }}{% endblock %}
 
 {% block content %}
-    <h1>Bienvenido a la aplicacion para realizar consultas </h1>
-    <p>primera aplicacion usando python junto con flask y bootstrap</p>
-    <button href="{{ url_for('hola') }}" type="button" class="btn btn-primary btn-sm">Consultas</button>
+<h1>Bienvenido a la aplicacion para realizar consultas </h1>
+<p>primera aplicacion usando python junto con flask y bootstrap</p>
+
+<a href="{{ url_for('consultas') }}" class="btn btn-primary">Consultas</a>
 {% endblock %}
