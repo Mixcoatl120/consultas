@@ -3,7 +3,7 @@
 {% block title %}Home - {{ super() }}{% endblock %}
 
 {% block content %}
-    <h1>Welcome to My Flask Bootstrap App</h1>
-    <p>This is a simple web application using Flask and Bootstrap.</p>
-    <button type="button" class="btn btn-primary btn-sm">Consultas</button>
+    <h1>Bienvenido a la aplicacion para realizar consultas </h1>
+    <p>primera aplicacion usando python junto con flask y bootstrap</p>
+    <button href="{{ url_for('hola') }}" type="button" class="btn btn-primary btn-sm">Consultas</button>
 {% endblock %}

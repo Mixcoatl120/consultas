@@ -9,5 +9,9 @@ def home():
     return render_template('home.html')
 #'<h1>hola mundo</h1> '
 
+@app.route('/hola')
+def hola():
+    return render_template('hola.html')
+
 if __name__ == '__main__':
     app.run(debug = True)
