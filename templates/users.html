@@ -4,6 +4,12 @@
 
 {% block content %}
 <h1>Consulta</h1>
+<div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default">busqueda</span>
+    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+</div>
+
+<div>
     <table class="table table-striped" >
         <thead>
             <tr>
@@ -13,15 +19,18 @@
                 <th scope="col">Rfc</th>
             </tr>
         </thead>
-        <tbody>
-            {% for user in users %}
-            <tr>
-                <td>{{ user[0]}} </td> <!-- columna de fechas -->
-                <td>{{ user[1]}} </td> <!-- columna de bitacora -->
-                <td>{{ user[2]}} </td> <!-- columna de razon social -->
-                <td>{{ user[3]}} </td> <!-- columna de rfc -->
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user[0]}} </td> <!-- columna de fechas -->
+                    <td>{{ user[1]}} </td> <!-- columna de bitacora -->
+                    <td>{{ user[2]}} </td> <!-- columna de razon social -->
+                    <td>{{ user[3]}} </td> <!-- columna de rfc -->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div> Hola como estas</div>
+
 {% endblock %}
