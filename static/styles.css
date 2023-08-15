@@ -1,7 +1,7 @@
 /* Custom styles for the web application */
 body {
-    background-color: #f8f9fa; /* Change the background color */
-    color: #333; /* Change the text color */
+    background-color: #f8f9fa; /* cambio de color del fondo */
+    color: #333; /* cambio de color*/
     font-family: Arial, sans-serif;
 }
 
@@ -15,14 +15,14 @@ body {
 
 /* Add some styling to the main content */
 h1 {
-    color: #007bff; /* Change the heading color */
+    color: #007bff; /*color del encabezado*/
 }
 
 p {
     font-size: 18px;
 }
 
-/* Style buttons */
+/* stilos de los botones */
 .btn-primary {
     border-color: #007bff;
 }
@@ -30,3 +30,4 @@ p {
     .btn-primary:hover {
         border-color: #0056b3;
     }
+

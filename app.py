@@ -29,16 +29,16 @@ def users():
     cursor = conn.cursor()
 
     # consulta con select de prueba
-    cursor.execute("SELECT bitacora_expediente,rnomrazonsolcial FROM seguimiento where fsolicitud ='2023-07-17'")
+    cursor.execute("SELECT fsolicitud,bitacora_expediente,rnomrazonsolcial,rfc FROM seguimiento where fsolicitud ='2023-07-17'")
     users = cursor.fetchall()
-
     conn.close()
     return render_template('users.html', users=users)
 
-#Pagina de consultas
+#prueba de cambio de pagina
 @app.route('/consultas')
 def consultas():
     return render_template('consultas.html')
 
+#
 if __name__ == '__main__':
     app.run(debug = True)
