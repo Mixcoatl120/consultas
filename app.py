@@ -41,7 +41,7 @@ def consultas():
     cursor = conn.cursor()
 
     # consulta con select de prueba
-    cursor.execute("SELECT fsolicitud,bitacora_expediente,rnomrazonsolcial,rfc FROM seguimiento where rfc='GNM9712017P7'")
+    cursor.execute("SELECT fsolicitud,bitacora_expediente,rnomrazonsolcial,rfc FROM seguimiento WHERE rnomrazonsolcial LIKE 'PEMEX'")
     users = cursor.fetchall()
     conn.close()
     return render_template('consultas.html', users=users)

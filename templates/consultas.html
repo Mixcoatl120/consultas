@@ -21,7 +21,7 @@
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
 
     <script defer src="{{ url_for('static', filename='js/tablaf.js') }}"></script>
-
+    <script defer src="{{ url_for('static', filename='js/Exportar.js') }}"></script>
 
 
 
@@ -35,6 +35,9 @@
         <tr>
             <td>Maximum date:</td>
             <td><input type="text" id="max" name="max"></td>
+        </tr>
+        <tr>
+            <td><input type="button" onclick="tableToExcel('example', 'W3C Example Table')" value="Exportar a Excel"></td>
         </tr>
     </tbody>
 </table>

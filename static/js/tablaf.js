@@ -5,7 +5,7 @@ $(document).ready(function () {
     DataTable.ext.search.push(function (settings, data, dataIndex) {
         var min = minDate.val();
         var max = maxDate.val();
-        var date = new Date(data[4]);
+        var date = new Date(data[0]);
 
         if (
             (min === null && max === null) ||
@@ -20,10 +20,10 @@ $(document).ready(function () {
 
     // Create date inputs
     minDate = new DateTime('#min', {
-        format: 'MMMM Do YYYY'
+        format: 'YYYY-MM-DD'
     });
     maxDate = new DateTime('#max', {
-        format: 'MMMM Do YYYY'
+        format: 'YYYY-MM-DD'
     });
 
     // DataTables initialisation
