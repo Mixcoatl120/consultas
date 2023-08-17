@@ -37,7 +37,14 @@ def users():
 #prueba de cambio de pagina
 @app.route('/consultas')
 def consultas():
-    return render_template('consultas.html')
+    conn = conexion()
+    cursor = conn.cursor()
+
+    # consulta con select de prueba
+    cursor.execute("SELECT fsolicitud,bitacora_expediente,rnomrazonsolcial,rfc FROM seguimiento where fsolicitud ='2023-07-17'")
+    users = cursor.fetchall()
+    conn.close()
+    return render_template('consultas.html', users=users)
 
 #
 if __name__ == '__main__':
