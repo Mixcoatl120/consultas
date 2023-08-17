@@ -3,35 +3,45 @@
 {% block title %}Consultas pruebas - {{ super() }}{% endblock %}
 
 {% block content %}
-<h1>Consulta</h1>
-<div class="input-group mb-3">
-    <span class="input-group-text" id="inputGroup-sizing-default">busqueda</span>
-    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-</div>
+<h1>Consulta de prueba select</h1>
+<<head>
+    <!--Links-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css"/>
+    <!--Scripts-->
+    <script defer src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script defer src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script defer src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script defer src="{{ url_for('static', filename='js/tabla.js') }}"></script>
+</head>
 
-<div>
-    <table class="table table-striped" >
-        <thead>
-            <tr>
-                <th scope="col">Fecha</th>
-                <th scope="col">Bitacora</th>
-                <th scope="col">Razon social</th>
-                <th scope="col">Rfc</th>
-            </tr>
-        </thead>
-            <tbody>
-                {% for user in users %}
-                <tr>
-                    <td>{{ user[0]}} </td> <!-- columna de fechas -->
-                    <td>{{ user[1]}} </td> <!-- columna de bitacora -->
-                    <td>{{ user[2]}} </td> <!-- columna de razon social -->
-                    <td>{{ user[3]}} </td> <!-- columna de rfc -->
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-
-    <div> Hola como estas</div>
-
+<table id="example" class="table table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th scope="col">Fecha</th>
+            <th scope="col">Bitacora</th>
+            <th scope="col">Razon social</th>
+            <th scope="col">Rfc</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user[0]}} </td> <!-- columna de fechas -->
+            <td>{{ user[1]}} </td> <!-- columna de bitacora -->
+            <td>{{ user[2]}} </td> <!-- columna de razon social -->
+            <td>{{ user[3]}} </td> <!-- columna de rfc -->
+        </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <th scope="col">Fecha</th>
+            <th scope="col">Bitacora</th>
+            <th scope="col">Razon social</th>
+            <th scope="col">Rfc</th>
+        </tr>
+    </tfoot>
+</table>
+<div> Hola como estas </div>
 {% endblock %}
