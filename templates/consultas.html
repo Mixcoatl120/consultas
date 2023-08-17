@@ -6,14 +6,25 @@
 <h1>Consultas por fecha</h1>
 <head>
     <!--Styles-->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"/>
-    <link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.5.1/css/dataTables.dateTime.min.css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.5.1/css/dataTables.dateTime.min.css" />
+
+    <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css" rel="stylesheet">
     <!--Scripts-->
     <script defer src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script defer src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
     <script defer src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></script>
+
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+
     <script defer src="{{ url_for('static', filename='js/tablaf.js') }}"></script>
+
+
+
+
 </head>
 <table border="0" cellspacing="5" cellpadding="5">
     <tbody>
@@ -27,32 +38,40 @@
         </tr>
     </tbody>
 </table>
-<table id="example" class="display nowrap" style="width:100%">
-    <thead>
-        <tr>
-            <th scope="col">Fecha</th>
-            <th scope="col">Bitacora</th>
-            <th scope="col">Razon social</th>
-            <th scope="col">Rfc</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for user in users %}
-        <tr>
-            <td>{{ user[0]}} </td> <!-- columna de fechas -->
-            <td>{{ user[1]}} </td> <!-- columna de bitacora -->
-            <td>{{ user[2]}} </td> <!-- columna de razon social -->
-            <td>{{ user[3]}} </td> <!-- columna de rfc -->
-        </tr>
-        {% endfor %}
-    </tbody>
-    <tfoot>
-        <tr>
-            <th scope="col">Fecha</th>
-            <th scope="col">Bitacora</th>
-            <th scope="col">Razon social</th>
-            <th scope="col">Rfc</th>
-        </tr>
-    </tfoot>
-</table>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="table-responsive">
+                <table id="example" class="display nowrap" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Bitacora</th>
+                            <th scope="col">Razon social</th>
+                            <th scope="col">Rfc</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                        <tr>
+                            <td>{{ user[0]}} </td> <!-- columna de fechas -->
+                            <td>{{ user[1]}} </td> <!-- columna de bitacora -->
+                            <td>{{ user[2]}} </td> <!-- columna de razon social -->
+                            <td>{{ user[3]}} </td> <!-- columna de rfc -->
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Bitacora</th>
+                            <th scope="col">Razon social</th>
+                            <th scope="col">Rfc</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
