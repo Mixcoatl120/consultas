@@ -3,22 +3,30 @@
 {% block title %}consulta - {{ super() }}{% endblock %}
 
 {% block content %}
-<h1>Consultas por fecha</h1>
+<h1>Consultas</h1>
 <head>
-    <!--Styles-->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+    <!------------------------------Styles------------------------------>
+    <!--bootstrap-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" />
+    <!--Datatable-->
+    <!--Datatable date-->
     <link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.5.1/css/dataTables.dateTime.min.css" />
-
-    <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css" rel="stylesheet">
-    <!--Scripts-->
+    <!-------------------------------Scripts--------------------------->
+    <!--JQuery-->
     <script defer src="https://code.jquery.com/jquery-3.7.0.js"></script>
+
+    <!--Datatable-->
     <script defer src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <!--bootstrap-->
+    <script defer src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <!--Datatable date-->
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
     <script defer src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></script>
 
-    <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+    <!--
+          <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+    -->
 
     <script defer src="{{ url_for('static', filename='js/tablaf.js') }}"></script>
     <script defer src="{{ url_for('static', filename='js/Exportar.js') }}"></script>
@@ -37,7 +45,7 @@
             <td><input type="text" id="max" name="max"></td>
         </tr>
         <tr>
-            <td><input type="button" onclick="tableToExcel('example', 'W3C Example Table')" value="Exportar a Excel"></td>
+            <td><input type="button" class="btn btn-primary" onclick="tableToExcel('example', 'W3C Example Table')" value="Exportar a Excel"></td>
         </tr>
     </tbody>
 </table>

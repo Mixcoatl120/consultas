@@ -6,22 +6,44 @@
 <h1>Consulta de prueba select</h1>
 <<head>
     <!--Links-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/scroller/2.2.0/css/scroller.bootstrap5.min.css">
     <!--Scripts-->
     <script defer src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script defer src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script defer src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/scroller/2.2.0/js/dataTables.scroller.min.js"></script>
     <script defer src="{{ url_for('static', filename='js/tabla.js') }}"></script>
 </head>
 
 <table id="example" class="table table-striped" style="width:100%">
     <thead>
         <tr>
-            <th scope="col">Fecha</th>
+            <th scope="col">Fecha Ingreso Siset</th>
+            <th scope="col">Fecha De Ingreso</th>
+            <th scope="col">Tipo De Ingreso</th>
+            <th scope="col">Tipo De Asunto</th>
+            <th scope="col">Descripccion</th>
+            <th scope="col">Remitente</th>
+            <th scope="col">Materia</th>
+            <th scope="col">Tramite</th>
             <th scope="col">Bitacora</th>
-            <th scope="col">Razon social</th>
+            <th scope="col">Razon Social</th>
             <th scope="col">Rfc</th>
+            <th scope="col">Permiso CRE</th>
+            <th scope="col">Clave proyecto</th>
+            <th scope="col">Tipo De Instalacion</th>
+            <th scope="col">Actividad</th>
+            <th scope="col">Direccion Gral. Firma</th>
+            <th scope="col">Fecha Asig. Evaluador</th>
+            <th scope="col">Evaluador</th>
+            <th scope="col">Contenido</th>
+            <th scope="col">Observaciones</th>
+            <th scope="col">Clave Del Documento</th>
+            <th scope="col">Fecha Del Documento</th>
+            <th scope="col">Rfc</th>
+
         </tr>
     </thead>
     <tbody>
