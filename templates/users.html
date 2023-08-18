@@ -20,30 +20,13 @@
 <table id="example" class="table table-striped" style="width:100%">
     <thead>
         <tr>
-            <th scope="col">Fecha Ingreso Siset</th>
             <th scope="col">Fecha De Ingreso</th>
             <th scope="col">Tipo De Ingreso</th>
-            <th scope="col">Tipo De Asunto</th>
-            <th scope="col">Descripccion</th>
-            <th scope="col">Remitente</th>
             <th scope="col">Materia</th>
-            <th scope="col">Tramite</th>
             <th scope="col">Bitacora</th>
-            <th scope="col">Razon Social</th>
-            <th scope="col">Rfc</th>
-            <th scope="col">Permiso CRE</th>
-            <th scope="col">Clave proyecto</th>
-            <th scope="col">Tipo De Instalacion</th>
-            <th scope="col">Actividad</th>
+            <th scope="col">Razon Social</th> 
             <th scope="col">Direccion Gral. Firma</th>
-            <th scope="col">Fecha Asig. Evaluador</th>
-            <th scope="col">Evaluador</th>
-            <th scope="col">Contenido</th>
-            <th scope="col">Observaciones</th>
-            <th scope="col">Clave Del Documento</th>
-            <th scope="col">Fecha Del Documento</th>
-            <th scope="col">Rfc</th>
-
+            <th scope="col">Estatus</th>
         </tr>
     </thead>
     <tbody>
@@ -53,15 +36,21 @@
             <td>{{ user[1]}} </td> <!-- columna de bitacora -->
             <td>{{ user[2]}} </td> <!-- columna de razon social -->
             <td>{{ user[3]}} </td> <!-- columna de rfc -->
+            <td>{{ user[4]}} </td>
+            <td>{{ user[5]}} </td>
+            <td>{{ user[6]}} </td>
         </tr>
         {% endfor %}
     </tbody>
     <tfoot>
         <tr>
-            <th scope="col">Fecha</th>
+            <th scope="col">Fecha De Ingreso</th>
+            <th scope="col">Tipo De Ingreso</th>
+            <th scope="col">Materia</th>
             <th scope="col">Bitacora</th>
-            <th scope="col">Razon social</th>
-            <th scope="col">Rfc</th>
+            <th scope="col">Razon Social</th>
+            <th scope="col">Direccion Gral. Firma</th>
+            <th scope="col">Estatus</th>
         </tr>
     </tfoot>
 </table>
