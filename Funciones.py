@@ -26,7 +26,7 @@ def crear_excel():
    # create excel writer object
     writer = pd.ExcelWriter('source/Consulta.xlsx')
     # write dataframe to excel
-    datos.to_excel(writer)
+    #datos.to_excel(writer)
     # save the excel
     writer.save()
 

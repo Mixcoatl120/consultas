@@ -5,66 +5,97 @@
 {% block content %}
 <h1>Consultas </h1>
 <p>Elige las entradas que se necesitan para la consulta</p>
-<div class="container">
-    <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-        <label class="form-check-label" for="inlineCheckbox1">Tramite</label>
-    </div>
-    <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-        <label class="form-check-label" for="inlineCheckbox2">Asunto</label>
-    </div>
-</div>
-
-<div class="container">
-    <select class="form-select" aria-label="Default select example">
-        <option selected>Selecciona tipo de materia</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-    </select>
-</div>
-
-<div class="container">
-    <div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-            <label class="form-check-label" for="inlineCheckbox1">DGGC</label>
+<form method="post">
+    <div class="container">
+        <div>
+            <label>Fecha</label>
         </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-            <label class="form-check-label" for="inlineCheckbox2">DGGTA</label>
+        <div>
+            <label>Desde</label>
+            <input type="datetime" name="f1" placeholder="yyyy-mm-dd" required/>
+            <label>a</label>
+            <input type="datetime" name="f2" placeholder="yyyy-mm-dd" required/>
         </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-            <label class="form-check-label" for="inlineCheckbox2">DGGEERC</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-            <label class="form-check-label" for="inlineCheckbox2">DGGPI</label>
-        </div>
-    </div>
-    <div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-            <label class="form-check-label" for="inlineCheckbox2">DGGEERNCM</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-            <label class="form-check-label" for="inlineCheckbox2">DGGOI</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-            <label class="form-check-label" for="inlineCheckbox2">DGIE</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-            <label class="form-check-label" for="inlineCheckbox2">DGGPITA</label>
-        </div>
-    </div>
     </div>
 
     <div class="container">
-        <a href="{{ url_for('consultas') }}" class="btn btn-primary">Realizar Busqueda</a>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="ASUNTO">
+            <label class="form-check-label" for="inlineCheckbox1">Tramite</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="TRAMITE">
+            <label class="form-check-label" for="inlineCheckbox2">Asunto</label>
+        </div>
     </div>
+
+    <div class="container">
+        <select class="form-select" aria-label="Default select example" name="materia" required>
+            <option selected>Selecciona tipo de materia</option>
+            <option value="1">ATMOSFERA</option>
+            <option value="2">CAMBIO DE USO DE SUELO</option>
+            <option value="3">IMPACTO AMBIENTAL</option>
+            <option value="4">LINEA BASE AMBIENTAL</option>
+            <option value="5">RIESGO AMBIENTAL</option>
+            <option value="6">TERCEROS</option>
+            <option value="7">RESIDUOS</option>
+            <option value="8">SITIOS CONTAMINADOS</option>
+            <option value="9">SEGUROS</option>
+            <option value="10">SASISOPA</option>
+            <option value="11">AVISOS DE POZOS</option>
+            <option value="12">AUDITORIA AMBIENTAL</option>
+            <option value="13">RESIDUOS MANEJO ESPECIAL</option>
+            <option value="14">INDUSTRIA LIMPIA</option>
+            <option value="15">CIERRE, DESMANTELAMIENTO Y ABANDONO</option>
+            <option value="16">PROTOCOLO DE RESPUESTA A EMERGENCIA</option>
+            <option value="17">EXPENDIO SIMULTANEO</option>
+            <option value="18">METANO</option>
+            <option value="19">NORMAS</option>
+        </select>
+    </div>
+
+    <div class="container">
+        <div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                <label class="form-check-label" for="inlineCheckbox1">DGGC</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                <label class="form-check-label" for="inlineCheckbox2">DGGTA</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                <label class="form-check-label" for="inlineCheckbox2">DGGEERC</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                <label class="form-check-label" for="inlineCheckbox2">DGGPI</label>
+            </div>
+        </div>
+        <div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                <label class="form-check-label" for="inlineCheckbox2">DGGEERNCM</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                <label class="form-check-label" for="inlineCheckbox2">DGGOI</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                <label class="form-check-label" for="inlineCheckbox2">DGIE</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                <label class="form-check-label" for="inlineCheckbox2">DGGPITA</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <input type="submit"  >
+        <a href="{{ url_for('users') }}" class="btn btn-primary">Realizar Busqueda</a>
+    </div>
+</form>
     {% endblock %}
