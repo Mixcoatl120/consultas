@@ -5,22 +5,22 @@
 {% block content %}
 <h1>Consultas </h1>
 <p>Elige las entradas que se necesitan para la consulta</p>
-<form method="post">
+<form method="post" action="/consulta">
     <div class="container">
         <div>
             <label>Fecha</label>
         </div>
         <div>
             <label>Desde</label>
-            <input type="datetime" name="f1" placeholder="yyyy-mm-dd" required/>
+            <input type="datetime" name="fecha_inicial" placeholder="yyyy-mm-dd" required />
             <label>a</label>
-            <input type="datetime" name="f2" placeholder="yyyy-mm-dd" required/>
+            <input type="datetime" name="fecha_final" placeholder="yyyy-mm-dd" required />
         </div>
     </div>
 
     <div class="container">
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="ASUNTO">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="ASUNTO" name="asunto">
             <label class="form-check-label" for="inlineCheckbox1">Tramite</label>
         </div>
         <div class="form-check form-check-inline">
@@ -32,25 +32,25 @@
     <div class="container">
         <select class="form-select" aria-label="Default select example" name="materia" required>
             <option selected>Selecciona tipo de materia</option>
-            <option value="1">ATMOSFERA</option>
-            <option value="2">CAMBIO DE USO DE SUELO</option>
-            <option value="3">IMPACTO AMBIENTAL</option>
-            <option value="4">LINEA BASE AMBIENTAL</option>
-            <option value="5">RIESGO AMBIENTAL</option>
-            <option value="6">TERCEROS</option>
-            <option value="7">RESIDUOS</option>
-            <option value="8">SITIOS CONTAMINADOS</option>
-            <option value="9">SEGUROS</option>
-            <option value="10">SASISOPA</option>
-            <option value="11">AVISOS DE POZOS</option>
-            <option value="12">AUDITORIA AMBIENTAL</option>
-            <option value="13">RESIDUOS MANEJO ESPECIAL</option>
-            <option value="14">INDUSTRIA LIMPIA</option>
-            <option value="15">CIERRE, DESMANTELAMIENTO Y ABANDONO</option>
-            <option value="16">PROTOCOLO DE RESPUESTA A EMERGENCIA</option>
-            <option value="17">EXPENDIO SIMULTANEO</option>
-            <option value="18">METANO</option>
-            <option value="19">NORMAS</option>
+            <option value="ATMOSFERA">ATMOSFERA</option>
+            <option value="CAMBIO DE USO DE SUELO">CAMBIO DE USO DE SUELO</option>
+            <option value="IMPACTO AMBIENTAL">IMPACTO AMBIENTAL</option>
+            <option value="LINEA BASE AMBIENTAL">LINEA BASE AMBIENTAL</option>
+            <option value="RIESGO AMBIENTAL">RIESGO AMBIENTAL</option>
+            <option value="TERCEROS">TERCEROS</option>
+            <option value="RESIDUOS">RESIDUOS</option>
+            <option value="SITIOS CONTAMINADOS">SITIOS CONTAMINADOS</option>
+            <option value="SEGUROS">SEGUROS</option>
+            <option value="SASISOPA">SASISOPA</option>
+            <option value="AVISOS DE POZOS">AVISOS DE POZOS</option>
+            <option value="AUDITORIA AMBIENTAL">AUDITORIA AMBIENTAL</option>
+            <option value="RESIDUOS MANEJO ESPECIAL">RESIDUOS MANEJO ESPECIAL</option>
+            <option value="INDUSTRIA LIMPIA">INDUSTRIA LIMPIA</option>
+            <option value="CIERRE, DESMANTELAMIENTO Y ABANDONO">CIERRE, DESMANTELAMIENTO Y ABANDONO</option>
+            <option value="PROTOCOLO DE RESPUESTA A EMERGENCIA">PROTOCOLO DE RESPUESTA A EMERGENCIA</option>
+            <option value="EXPENDIO SIMULTANEO">EXPENDIO SIMULTANEO</option>
+            <option value="METANO">METANO</option>
+            <option value="NORMAS">NORMAS</option>
         </select>
     </div>
 
@@ -92,9 +92,11 @@
             </div>
         </div>
     </div>
-
-    <div class="container">
-        <input type="submit" class="btn btn-primary" value="Realizar consulta"/>
+    <div>
+        <input type="submit" class="btn btn-primary" value="Realizar consulta" />
     </div>
 </form>
-    {% endblock %}
+
+
+
+{% endblock %}

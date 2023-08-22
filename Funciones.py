@@ -1,3 +1,4 @@
+from operator import index
 import pandas as pd
 import psycopg2
 
@@ -22,11 +23,11 @@ def crear_excel():
     row = cursor.fetchall()
     conn.commit()
     conn.close()
-
+    print(row)
    # create excel writer object
     writer = pd.ExcelWriter('source/Consulta.xlsx')
     # write dataframe to excel
-    #datos.to_excel(writer)
+    row.to_excel()
     # save the excel
     writer.save()
 

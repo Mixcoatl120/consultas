@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for
 from flask_bootstrap import Bootstrap
 import psycopg2
 
@@ -21,37 +21,42 @@ bootstrap = Bootstrap(app)
 #Home
 @app.route('/', methods=('GET','POST'))# pagina de inicio con el metodo post y get para obtener la informacioan de
 def home():
-    if request.method == 'POST':
-        f1 = request.form['f1']
-        f2 = request.form['f2']
-        #m = request.form['materia']
-        print(str(f1))
-        print(str(f2))
-        #print(str(m))
     return render_template('home.html')
 
-@app.route('/users')
+
+@app.route('/consulta', methods=('GET','POST'))
 def users():
+    if request.method == 'POST':
+        f1 = request.form['fecha_inicial']
+        f2 = request.form['fecha_final']
+        asunto = request.form['asunto']
+        mat = request.form['materia']
+        print(str(f1))
+        print(str(f2))
+        print(str(mat))
     conn = conexion()
     cursor = conn.cursor()
     #consulta con select de prueba
-    cursor.execute("SELECT seguimiento.fsolicitud, cat_tipo_ingreso.tipo_ingreso, cat_materia.materia, cat_tramites.cofemer,seguimiento.rnomrazonsolcial, dir_gral.siglas,cat_estatus.estatus   FROM seguimiento LEFT JOIN cat_tipo_ingreso ON seguimiento.tipo_ingreso = cat_tipo_ingreso.id LEFT JOIN cat_tipo_asunto ON seguimiento.tipo_asunto = cat_tipo_asunto.id LEFT JOIN cat_descripcion ON seguimiento.descripcion = cat_descripcion.id LEFT JOIN cat_materia ON seguimiento.materia = cat_materia.id LEFT JOIN cat_tramites ON seguimiento.tramite = cat_tramites.idtram LEFT JOIN cat_tipoinstalacion  ON seguimiento.tipoinstalacion = cat_tipoinstalacion.id LEFT JOIN cat_actividad ON seguimiento.cve_actividad = cat_actividad.id LEFT JOIN cat_personal AS evaluador ON seguimiento.nevaluador = evaluador.idpers LEFT JOIN cat_personal AS aar ON seguimiento.persona_ingresa = aar.idpers LEFT JOIN dir_gral ON seguimiento.dirgralfirma = dir_gral.id LEFT JOIN cat_sitact ON seguimiento.situacionactualtram = cat_sitact.id LEFT JOIN cat_sentido_resolucion ON seguimiento.sentido_resolucion = cat_sentido_resolucion.id LEFT JOIN cat_estatus ON seguimiento.estatus_tramite = cat_estatus.id WHERE seguimiento.fsolicitud >= ""'"+f1+"'"" seguimiento <= ""'"+f2+"'"" ")
-    users = cursor.fetchall()
+    cursor.execute("SELECT seguimiento.fsolicitud, cat_tipo_ingreso.tipo_ingreso, cat_materia.materia, cat_tramites.cofemer,seguimiento.rnomrazonsolcial, dir_gral.siglas,cat_estatus.estatus   FROM seguimiento LEFT JOIN cat_tipo_ingreso ON seguimiento.tipo_ingreso = cat_tipo_ingreso.id LEFT JOIN cat_tipo_asunto ON seguimiento.tipo_asunto = cat_tipo_asunto.id LEFT JOIN cat_descripcion ON seguimiento.descripcion = cat_descripcion.id LEFT JOIN cat_materia ON seguimiento.materia = cat_materia.id LEFT JOIN cat_tramites ON seguimiento.tramite = cat_tramites.idtram LEFT JOIN cat_tipoinstalacion  ON seguimiento.tipoinstalacion = cat_tipoinstalacion.id LEFT JOIN cat_actividad ON seguimiento.cve_actividad = cat_actividad.id LEFT JOIN cat_personal AS evaluador ON seguimiento.nevaluador = evaluador.idpers LEFT JOIN cat_personal AS aar ON seguimiento.persona_ingresa = aar.idpers LEFT JOIN dir_gral ON seguimiento.dirgralfirma = dir_gral.id LEFT JOIN cat_sitact ON seguimiento.situacionactualtram = cat_sitact.id LEFT JOIN cat_sentido_resolucion ON seguimiento.sentido_resolucion = cat_sentido_resolucion.id LEFT JOIN cat_estatus ON seguimiento.estatus_tramite = cat_estatus.id WHERE seguimiento.fsolicitud >= " + "'" + f1 + "'" + " and seguimiento.fsolicitud <= " + "'" + f2 + "'" + " and cat_materia.materia = " + "'" + mat + "'" +";")
+    users = cursor.fetchall()       
     conn.close()
-    return render_template('users.html', users=users)
-    #return render_template('users.html')
+    return render_template('consulta.html', users=users)
+
+@app.route('/tabla')
+def tabla():
+    return  render_template('consulta.html')
 
 #prueba de cambio de pagina
-@app.route('/consultas')
-def consultas():
-    conn = conexion()
-    cursor = conn.cursor()
+#@app.route('/FAT')
+#def consultas():
+    #conn = conexion()
+    #cursor = conn.cursor()
     # consulta con select de prueba
-    cursor.execute("SELECT fsolicitud,bitacora_expediente,rnomrazonsolcial,rfc FROM seguimiento WHERE fsolicitud = '2023-07-17'")
-    users = cursor.fetchall()
-    conn.close()
-    return render_template('consultas.html', users=users)
+    #cursor.execute("SELECT fsolicitud,bitacora_expediente,rnomrazonsolcial,rfc FROM seguimiento WHERE fsolicitud = '2023-07-17'")
+    #users = cursor.fetchall()
+    #conn.close()
+    #return render_template('consultas.html', users=users)
 
-#
+#inicio de aplicacion
 if __name__ == '__main__':
     app.run(debug = True)
