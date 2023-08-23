@@ -29,7 +29,7 @@ def users():
     if request.method == 'POST':
         f1 = request.form['fecha_inicial']
         f2 = request.form['fecha_final']
-        asunto = request.form['asunto']
+        #asun = request.form['asunto']
         mat = request.form['materia']
         print(str(f1))
         print(str(f2))
@@ -42,9 +42,6 @@ def users():
     conn.close()
     return render_template('consulta.html', users=users)
 
-@app.route('/tabla')
-def tabla():
-    return  render_template('consulta.html')
 
 #prueba de cambio de pagina
 #@app.route('/FAT')
