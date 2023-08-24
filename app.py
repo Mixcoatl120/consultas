@@ -27,13 +27,9 @@ def home():
 @app.route('/consulta', methods=('GET','POST'))
 def users():
     if request.method == 'POST':
-        f1 = request.form['fecha_inicial']
-        f2 = request.form['fecha_final']
-        #asun = request.form['asunto']
-        mat = request.form['materia']
-        print(str(f1))
-        print(str(f2))
-        print(str(mat))
+        f1 = request.form['fecha_inicial'] #variable de fecha inicial
+        f2 = request.form['fecha_final']# variable de fecha final
+        mat = request.form['materia']#variable de materia 
     conn = conexion()
     cursor = conn.cursor()
     #consulta con select de prueba
