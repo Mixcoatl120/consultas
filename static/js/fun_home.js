@@ -16,7 +16,7 @@ boton.addEventListener('click', function () {
                 cadena = cadena + e.value;
             }
             else {
-                cadena = cadena + " " + e.value
+                cadena = cadena + " " + e.value;
             }
         }
     });

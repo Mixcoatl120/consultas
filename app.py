@@ -31,8 +31,8 @@ def users():
         f1 = request.form['fecha_inicial'] #variable de fecha inicial
         f2 = request.form['fecha_final']# variable de fecha final
         mat = request.form['materia']#variable de materia
-        con = request.form['condicion']
-        print(con)
+        con = request.form['er']
+    print(con)
     conn = conexion()
     cursor = conn.cursor()
     #consulta con select de prueba
