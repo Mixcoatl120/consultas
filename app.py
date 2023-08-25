@@ -1,3 +1,4 @@
+import re
 from flask import Flask, render_template, request, url_for
 from flask_bootstrap import Bootstrap
 import psycopg2
@@ -29,7 +30,9 @@ def users():
     if request.method == 'POST':
         f1 = request.form['fecha_inicial'] #variable de fecha inicial
         f2 = request.form['fecha_final']# variable de fecha final
-        mat = request.form['materia']#variable de materia 
+        mat = request.form['materia']#variable de materia
+        con = request.form['condicion']
+        print(con)
     conn = conexion()
     cursor = conn.cursor()
     #consulta con select de prueba

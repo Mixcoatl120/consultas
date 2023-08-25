@@ -8,26 +8,26 @@
 </head>
 <h1>Consultas </h1>
 <p>Elige las entradas que se necesitan para la consulta</p>
-<form id="1" method="post" action="/consulta">
+<form id="1" method="post">
     <div class="container">
         <div>
             <h2>Fecha</h2>
         </div>
         <div>
-            <label>Desde</label>
+            <label for="inicial">Desde</label>
             <input id="inicial" type="datetime" name="fecha_inicial" placeholder="yyyy-mm-dd" required />
-            <label >a</label>
+            <label for="final">a</label>
             <input id="final" type="datetime" name="fecha_final" placeholder="yyyy-mm-dd" required />
         </div>
     </div>
 
     <div class="container">
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="Asunto" value="1" name="asunto" >
+            <input class="form-check-input" type="checkbox" id="Asunto" value="or tipoingreso = 'ASUNTO'" name="asunto">
             <label class="form-check-label" for="Asunto">Tramite</label>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="Tramite" value="1" name="tramite">
+            <input class="form-check-input" type="checkbox" id="Tramite" value="or tipoingreso = 'TRAMITE'" name="tramite">
             <label class="form-check-label" for="Tramite">Asunto</label>
         </div>
     </div>
@@ -60,44 +60,47 @@
     <div class="container">
         <div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="D1" value="1">
+                <input class="form-check-input" type="checkbox" id="D1" value="or dir_gen = 'DGGC'">
                 <label class="form-check-label" for="D1">DGGC</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="D2" value="1">
+                <input class="form-check-input" type="checkbox" id="D2" value="or dir_gen = 'DGGTA'">
                 <label class="form-check-label" for="D2">DGGTA</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="D3" value="1">
+                <input class="form-check-input" type="checkbox" id="D3" value="or dir_gen = 'DGGEERC'">
                 <label class="form-check-label" for="D3">DGGEERC</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="D4" value="1">
+                <input class="form-check-input" type="checkbox" id="D4" value="or dir_gen = 'DGGPI'">
                 <label class="form-check-label" for="D4">DGGPI</label>
             </div>
         </div>
         <div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="D5" value="1">
+                <input class="form-check-input" type="checkbox" id="D5" value="or dir_gen = 'DGGEERNCM'">
                 <label class="form-check-label" for="D5">DGGEERNCM</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="D6" value="1">
+                <input class="form-check-input" type="checkbox" id="D6" value="or dir_gen = 'DGGOI'">
                 <label class="form-check-label" for="D6">DGGOI</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="D7" value="1">
+                <input class="form-check-input" type="checkbox" id="D7" value="or dir_gen = 'DGIE'">
                 <label class="form-check-label" for="D7">DGIE</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="D8" value="1">
-                <label  class="form-check-label" for="D8">DGGPITA</label>
+                <input class="form-check-input" type="checkbox" id="D8" value="or dir_gen = 'DGGPITA'">
+                <label class="form-check-label" for="D8">DGGPITA</label>
             </div>
         </div>
     </div>
     <div>
+        <input id="con" type="text" name="condicion" />
         <input id="r_con" type="submit" class="btn btn-primary" value="Realizar consulta" />
     </div>
 </form>
-<ul id="lista" class="list_g"></ul>
+
+<ul id="con_tipingre" class="list_g" hidden></ul>
+
 {% endblock %}
