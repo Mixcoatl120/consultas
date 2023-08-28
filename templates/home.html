@@ -23,11 +23,11 @@
 
     <div class="container">
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="Asunto" value="tipoingreso = 'ASUNTO'" name="asunto">
+            <input class="form-check-input" type="checkbox" id="Asunto" value="cat_tipo_ingreso.tipo_ingreso= 'ASUNTO'" name="asunto">
             <label class="form-check-label" for="Asunto">Tramite</label>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="Tramite" value="tipoingreso = 'TRAMITE'" name="tramite">
+            <input class="form-check-input" type="checkbox" id="Tramite" value="cat_tipo_ingreso.tipo_ingreso = 'TRAMITE'" name="tramite">
             <label class="form-check-label" for="Tramite">Asunto</label>
         </div>
     </div>
@@ -60,43 +60,44 @@
     <div class="container">
         <div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="D1" value="dir_gen = 'DGGC'">
+                <input class="form-check-input" type="checkbox" id="D1" value="dir_gral.siglas = 'DGGC'">
                 <label class="form-check-label" for="D1">DGGC</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="D2" value="dir_gen = 'DGGTA'">
+                <input class="form-check-input" type="checkbox" id="D2" value="dir_gral.siglas = 'DGGTA'">
                 <label class="form-check-label" for="D2">DGGTA</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="D3" value="dir_gen = 'DGGEERC'">
+                <input class="form-check-input" type="checkbox" id="D3" value="dir_gral.siglas = 'DGGEERC'">
                 <label class="form-check-label" for="D3">DGGEERC</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="D4" value="dir_gen = 'DGGPI'">
+                <input class="form-check-input" type="checkbox" id="D4" value="dir_gral.siglas = 'DGGPI'">
                 <label class="form-check-label" for="D4">DGGPI</label>
             </div>
         </div>
         <div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="D5" value="dir_gen = 'DGGEERNCM'">
+                <input class="form-check-input" type="checkbox" id="D5" value="dir_gral.siglas = 'DGGEERNCM'">
                 <label class="form-check-label" for="D5">DGGEERNCM</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="D6" value="dir_gen = 'DGGOI'">
+                <input class="form-check-input" type="checkbox" id="D6" value="dir_gral.siglas = 'DGGOI'">
                 <label class="form-check-label" for="D6">DGGOI</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="D7" value="dir_gen = 'DGIE'">
+                <input class="form-check-input" type="checkbox" id="D7" value="dir_gral.siglas = 'DGIE'">
                 <label class="form-check-label" for="D7">DGIE</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="D8" value="dir_gen = 'DGGPITA'">
+                <input class="form-check-input" type="checkbox" id="D8" value="dir_gral.siglas = 'DGGPITA'">
                 <label class="form-check-label" for="D8">DGGPITA</label>
             </div>
         </div>
     </div>
     <div>
-        <input id="con" type="text" name="er" hidden/>
+        <input id="con_tip" type="text" name="ta" hidden /><!--input oculto sirve para mandar las condiciones de tipo ingreso-->
+        <input id="con_dg" type="text" name="dg" hidden /><!--input oculto sirve para mandar las condiciones de direccion general-->
         <input id="r_con" type="submit" class="btn btn-primary" value="Realizar consulta" />
     </div>
 </form>
