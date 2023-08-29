@@ -14,7 +14,7 @@ db_config = {
 
 def imp_excel(con_where):
     conn = psycopg2.connect(**db_config)
-    # Define your SQL query and retrieve data using pandas
+    # sentencia inicial
     query = "SELECT" + \
     " seguimiento.fingreso_siset,"  + \
     " seguimiento.fsolicitud," + \
@@ -84,7 +84,7 @@ def imp_excel(con_where):
     " LEFT JOIN cat_estatus ON seguimiento.estatus_tramite = cat_estatus.id" + \
     " WHERE"
 
-
+    #sentencia inicial con las condiciones ya integradas
     final = query + " " + con_where
 
     dataframe = pd.read_sql_query(final, conn)

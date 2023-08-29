@@ -30,8 +30,8 @@ def users():
         f1 = request.form['fecha_inicial'] #variable de fecha inicial
         f2 = request.form['fecha_final']# variable de fecha final
         mat = request.form['materia']#variable de materia
-        ti = request.form['ta']
-        dg = request.form['dg']
+        ti = request.form['ta']#variable con condiciones de tipo de asunto
+        dg = request.form['dg']#variables con condiciones de direccion general
 
         #print(ti)
         #print(dg)  
@@ -39,7 +39,7 @@ def users():
     conn = conexion()
     cursor = conn.cursor()
 
-    #consulta inicial con condicion de fechas 
+    #consulta inicial 
     con_inicial = "SELECT seguimiento.fsolicitud, cat_tipo_ingreso.tipo_ingreso, cat_materia.materia, cat_tramites.cofemer,seguimiento.rnomrazonsolcial, dir_gral.siglas,cat_estatus.estatus"+ \
     " FROM seguimiento" + \
     " LEFT JOIN cat_tipo_ingreso ON seguimiento.tipo_ingreso = cat_tipo_ingreso.id" + \
@@ -65,8 +65,9 @@ def users():
     con_materia = "and cat_materia.materia ='" + mat + "'"
     #string con las condiciones de direccion general
     con_dirgeneral =dg + ")"
-    #string con la tentencia final completa
+    #string con la sentencia final completa
     query = con_inicial + " " + con_fechas + " " +con_tipoingreso + " " + con_materia + " " + con_dirgeneral
+    #string con condiciones para la funcion de exportar excel
     con_where = con_fechas + " " +con_tipoingreso + " " + con_materia + " " + con_dirgeneral
     
     #print("")
@@ -75,6 +76,7 @@ def users():
     #print("")
     #print("")
 
+    #funcion para realizar una consulta y crear un archivo en excel para su descarga
     imp_excel(con_where)
 
     cursor.execute(query)
@@ -85,6 +87,7 @@ def users():
 
 @app.route('/download')
 def Download_File():
+    #ruta para descargar el archivo
     PATH='source/Consulta.xlsx'
     return send_file(PATH,as_attachment=True)
 
