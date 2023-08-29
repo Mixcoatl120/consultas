@@ -7,9 +7,8 @@ var pasos = 0;
 boton.addEventListener('click', function () {
     checks.forEach((e) => {
         if (e.checked == true) {
-            pasos = pasos + 1
             //if para separar  tipo de ingreso de los checksbox
-            if (e.value == "tipoingreso = 'ASUNTO'" || e.value == "tipoingreso = 'TRAMITE'") {
+            if (e.value == "cat_tipo_ingreso.tipo_ingreso = 'ASUNTO'" || e.value == "cat_tipo_ingreso.tipo_ingreso = 'TRAMITE'") {
                 if (tip_asunto == "") {
                     tip_asunto = "and (" + e.value;
                 }
@@ -19,7 +18,7 @@ boton.addEventListener('click', function () {
             }
 
             //if para separar direccion general de los checksbox
-            if (e.value != "tipoingreso = 'ASUNTO'" && e.value != "tipoingreso = 'TRAMITE'") {
+            if (e.value != "cat_tipo_ingreso.tipo_ingreso = 'ASUNTO'" && e.value != "cat_tipo_ingreso.tipo_ingreso = 'TRAMITE'") {
                 if (tip_dir_gen == "") {
                     tip_dir_gen = "and (" + e.value;
                 }
