@@ -88,8 +88,8 @@ def imp_excel(con_where):
     final = query + " " + con_where
 
     dataframe = pd.read_sql_query(final, conn)
-    # Close the database connection
+    # cierre de la conexion
     conn.close()
-    # Save the data to an Excel file
+    # guardando los datos en el excel
     excel_file_path = 'source/Consulta.xlsx'
     dataframe.to_excel(excel_file_path, index=False, engine='openpyxl')

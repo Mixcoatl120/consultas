@@ -33,14 +33,21 @@ def users():
         ti = request.form['ta']#variable con condiciones de tipo de asunto
         dg = request.form['dg']#variables con condiciones de direccion general
 
-        #print(ti)
+        print(ti)
         #print(dg)  
 
     conn = conexion()
     cursor = conn.cursor()
 
     #consulta inicial 
-    con_inicial = "SELECT seguimiento.fsolicitud, cat_tipo_ingreso.tipo_ingreso, cat_materia.materia, cat_tramites.cofemer,seguimiento.rnomrazonsolcial, dir_gral.siglas,cat_estatus.estatus"+ \
+    con_inicial = "SELECT" + \
+    " seguimiento.fsolicitud," + \
+    " cat_tipo_ingreso.tipo_ingreso," + \
+    "seguimiento.bitacora_expediente," + \
+    " cat_materia.materia," + \
+    " seguimiento.rnomrazonsolcial," + \
+    " dir_gral.siglas," + \
+    " cat_estatus.estatus" + \
     " FROM seguimiento" + \
     " LEFT JOIN cat_tipo_ingreso ON seguimiento.tipo_ingreso = cat_tipo_ingreso.id" + \
     " LEFT JOIN cat_tipo_asunto ON seguimiento.tipo_asunto = cat_tipo_asunto.id" + \
@@ -60,21 +67,28 @@ def users():
     #string con la condicion de fecha
     con_fechas = "(seguimiento.fsolicitud >= " + "'" + f1 + "'" + " and seguimiento.fsolicitud <= " + "'" + f2 + "')"
     #string con condiciones tipo de ingreso
-    con_tipoingreso = ti +")"
+    con_tipoingreso = ti
+    if con_tipoingreso != "":
+        con_tipoingreso = ti +")"
     #string con dicion de materia
-    con_materia = "and cat_materia.materia ='" + mat + "'"
+    if mat != "":
+        con_materia = "and cat_materia.materia ='" + mat + "'"
+    else:
+        con_materia = ""
     #string con las condiciones de direccion general
-    con_dirgeneral =dg + ")"
+    con_dirgeneral = dg
+    if con_dirgeneral !="":
+        con_dirgeneral =dg + ")"
     #string con la sentencia final completa
     query = con_inicial + " " + con_fechas + " " +con_tipoingreso + " " + con_materia + " " + con_dirgeneral
     #string con condiciones para la funcion de exportar excel
     con_where = con_fechas + " " +con_tipoingreso + " " + con_materia + " " + con_dirgeneral
     
-    #print("")
-    #print("")
-    #print(query)
-    #print("")
-    #print("")
+    print("")
+    print("")
+    print(query)
+    print("")
+    print("")
 
     #funcion para realizar una consulta y crear un archivo en excel para su descarga
     imp_excel(con_where)

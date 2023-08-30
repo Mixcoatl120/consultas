@@ -3,7 +3,6 @@ var boton = document.getElementById('r_con');
 var checks = document.querySelectorAll('.form-check-input');
 var tip_asunto = "";
 var tip_dir_gen = "";
-var pasos = 0;
 boton.addEventListener('click', function () {
     checks.forEach((e) => {
         if (e.checked == true) {
