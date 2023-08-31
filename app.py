@@ -87,8 +87,8 @@ def users():
     #print("")
     #print("")
     print(query)
-    #print("")
-    #print("")
+    print("")
+    print("")
 
     #funcion para realizar una consulta y crear un archivo en excel para su descarga
     imp_excel(con_where)
@@ -96,8 +96,6 @@ def users():
     cursor.execute(query)
     users = cursor.fetchall()      
     
-    print(users)
-
     conn.close()
     return render_template('consulta.html', users=users)
 
