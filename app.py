@@ -86,7 +86,7 @@ def users():
     
     #print("")
     #print("")
-    #print(query)
+    print(query)
     #print("")
     #print("")
 
@@ -94,7 +94,9 @@ def users():
     imp_excel(con_where)
     #
     cursor.execute(query)
-    users = cursor.fetchall()       
+    users = cursor.fetchall()      
+    
+    print(users)
 
     conn.close()
     return render_template('consulta.html', users=users)
@@ -105,18 +107,6 @@ def Download_File():
     PATH='source/Consulta.xlsx'
     return send_file(PATH,as_attachment=True)
 
-
-#prueba de cambio de pagina
-#@app.route('/FAT')
-#def consultas():
-    #conn = conexion()
-    #cursor = conn.cursor()
-    # consulta con select de prueba
-    #cursor.execute("SELECT fsolicitud,bitacora_expediente,rnomrazonsolcial,rfc FROM seguimiento WHERE fsolicitud = '2023-07-17'")
-    #users = cursor.fetchall()
-    #conn.close()
-    #return render_template('tabla_prueba.html', users=users)
-
-#inicio de aplicacion
+# inicio de la aplicacion
 if __name__ == '__main__':
     app.run(debug = True)

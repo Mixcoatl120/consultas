@@ -6,13 +6,12 @@
 <head>
     <script defer src="{{ url_for('static', filename='js/fun_home.js') }}"></script>
 </head>
-<h1>Consultas </h1>
-<p>Elige las entradas que se necesitan para la consulta</p>
+<h1 class="h4">Consultas a SISET</h1>
 <form id="1" method="post" action="/consulta">
     <div class="container-xl">
         <div class="row mt-4">
             <div class="col">
-                <h2>Fecha</h2>
+                <h2 class="h5">Fecha</h2>
             </div>
             <div>
                 <label for="inicial">Desde</label>
@@ -63,7 +62,7 @@
         </div>
 
         <div class="row mt-4">
-            <div class="col-2">
+            <div class="col-1">
                 <div>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="D1" value="dir_gral.siglas = 'DGGC'">
@@ -116,17 +115,14 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col"> </div>
-            <div class="col-3">
+        <div class="row mt-3">
+            <div class="col-1"></div>
+            <div class="col-1">
                 <input id="con_tip" type="text" name="ta" hidden /><!--input oculto sirve para mandar las condiciones de tipo ingreso-->
                 <input id="con_dg" type="text" name="dg" hidden /><!--input oculto sirve para mandar las condiciones de direccion general-->
                 <input id="r_con" type="submit" class="btn btn-primary" value="Realizar consulta" />
             </div>
-            <div class="col"> </div>
         </div>
     </div>
 </form>
-<!--<ul id="con_tipingre" class="list_g" hidden></ul>-->
-
 {% endblock %}
