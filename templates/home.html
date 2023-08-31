@@ -9,96 +9,122 @@
 <h1>Consultas </h1>
 <p>Elige las entradas que se necesitan para la consulta</p>
 <form id="1" method="post" action="/consulta">
-    <div class="container">
-        <div>
-            <h2>Fecha</h2>
+    <div class="container-xl">
+        <div class="row mt-4">
+            <div class="col">
+                <h2>Fecha</h2>
+            </div>
+            <div>
+                <label for="inicial">Desde</label>
+                <input id="inicial" type="date" name="fecha_inicial" placeholder="yyyy-mm-dd" required />
+                <label for="final">a</label>
+                <input id="final" type="date" name="fecha_final" placeholder="yyyy-mm-dd" required />
+            </div>
         </div>
-        <div>
-            <label for="inicial">Desde</label>
-            <input id="inicial" type="date"   name="fecha_inicial" placeholder="yyyy-mm-dd" required />
-            <label for="final">a</label>
-            <input id="final" type="date" name="fecha_final" placeholder="yyyy-mm-dd" required />
-        </div>
-    </div>
 
-    <div class="container">
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="Asunto" value="cat_tipo_ingreso.tipo_ingreso = 'ASUNTO'" name="asunto">
-            <label class="form-check-label" for="Asunto">Tramite</label>
+        <div class="row mt-4">
+            <div class="col">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="Asunto" value="cat_tipo_ingreso.tipo_ingreso = 'ASUNTO'" name="asunto">
+                    <label class="form-check-label" for="Asunto">Tramite</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="Tramite" value="cat_tipo_ingreso.tipo_ingreso = 'TRAMITE'" name="tramite">
+                    <label class="form-check-label" for="Tramite">Asunto</label>
+                </div>
+            </div>
         </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="Tramite" value="cat_tipo_ingreso.tipo_ingreso = 'TRAMITE'" name="tramite">
-            <label class="form-check-label" for="Tramite">Asunto</label>
-        </div>
-    </div>
 
-    <div class="container-sm">
-        <select class="form-select" aria-label="Default select example" name="materia">
-            <option selected></option>
-            <option value="ATMOSFERA">ATMOSFERA</option>
-            <option value="CAMBIO DE USO DE SUELO">CAMBIO DE USO DE SUELO</option>
-            <option value="IMPACTO AMBIENTAL">IMPACTO AMBIENTAL</option>
-            <option value="LINEA BASE AMBIENTAL">LINEA BASE AMBIENTAL</option>
-            <option value="RIESGO AMBIENTAL">RIESGO AMBIENTAL</option>
-            <option value="TERCEROS">TERCEROS</option>
-            <option value="RESIDUOS">RESIDUOS</option>
-            <option value="SITIOS CONTAMINADOS">SITIOS CONTAMINADOS</option>
-            <option value="SEGUROS">SEGUROS</option>
-            <option value="SASISOPA">SASISOPA</option>
-            <option value="AVISOS DE POZOS">AVISOS DE POZOS</option>
-            <option value="AUDITORIA AMBIENTAL">AUDITORIA AMBIENTAL</option>
-            <option value="RESIDUOS MANEJO ESPECIAL">RESIDUOS MANEJO ESPECIAL</option>
-            <option value="INDUSTRIA LIMPIA">INDUSTRIA LIMPIA</option>
-            <option value="CIERRE, DESMANTELAMIENTO Y ABANDONO">CIERRE, DESMANTELAMIENTO Y ABANDONO</option>
-            <option value="PROTOCOLO DE RESPUESTA A EMERGENCIA">PROTOCOLO DE RESPUESTA A EMERGENCIA</option>
-            <option value="EXPENDIO SIMULTANEO">EXPENDIO SIMULTANEO</option>
-            <option value="METANO">METANO</option>
-            <option value="NORMAS">NORMAS</option>
-        </select>
-    </div>
+        <div class="row mt-4">
+            <div class="col-5">
+                <select class="form-select" aria-label="Default select example" name="materia">
+                    <option selected></option>
+                    <option value="ATMOSFERA">ATMOSFERA</option>
+                    <option value="CAMBIO DE USO DE SUELO">CAMBIO DE USO DE SUELO</option>
+                    <option value="IMPACTO AMBIENTAL">IMPACTO AMBIENTAL</option>
+                    <option value="LINEA BASE AMBIENTAL">LINEA BASE AMBIENTAL</option>
+                    <option value="RIESGO AMBIENTAL">RIESGO AMBIENTAL</option>
+                    <option value="TERCEROS">TERCEROS</option>
+                    <option value="RESIDUOS">RESIDUOS</option>
+                    <option value="SITIOS CONTAMINADOS">SITIOS CONTAMINADOS</option>
+                    <option value="SEGUROS">SEGUROS</option>
+                    <option value="SASISOPA">SASISOPA</option>
+                    <option value="AVISOS DE POZOS">AVISOS DE POZOS</option>
+                    <option value="AUDITORIA AMBIENTAL">AUDITORIA AMBIENTAL</option>
+                    <option value="RESIDUOS MANEJO ESPECIAL">RESIDUOS MANEJO ESPECIAL</option>
+                    <option value="INDUSTRIA LIMPIA">INDUSTRIA LIMPIA</option>
+                    <option value="CIERRE, DESMANTELAMIENTO Y ABANDONO">CIERRE, DESMANTELAMIENTO Y ABANDONO</option>
+                    <option value="PROTOCOLO DE RESPUESTA A EMERGENCIA">PROTOCOLO DE RESPUESTA A EMERGENCIA</option>
+                    <option value="EXPENDIO SIMULTANEO">EXPENDIO SIMULTANEO</option>
+                    <option value="METANO">METANO</option>
+                    <option value="NORMAS">NORMAS</option>
+                </select>
+            </div>
+        </div>
 
-    <div class="container">
-        <div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="D1" value="dir_gral.siglas = 'DGGC'">
-                <label class="form-check-label" for="D1">DGGC</label>
+        <div class="row mt-4">
+            <div class="col-2">
+                <div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="D1" value="dir_gral.siglas = 'DGGC'">
+                        <label class="form-check-label" for="D1">DGGC</label>
+                    </div>
+                </div>
+                <div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="D2" value="dir_gral.siglas = 'DGGTA'">
+                        <label class="form-check-label" for="D2">DGGTA</label>
+                    </div>
+                </div>
+                <div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="D3" value="dir_gral.siglas = 'DGGEERC'">
+                        <label class="form-check-label" for="D3">DGGEERC</label>
+                    </div>
+                </div>
+                <div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="D4" value="dir_gral.siglas = 'DGGPI'">
+                        <label class="form-check-label" for="D4">DGGPI</label>
+                    </div>
+                </div>
             </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="D2" value="dir_gral.siglas = 'DGGTA'">
-                <label class="form-check-label" for="D2">DGGTA</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="D3" value="dir_gral.siglas = 'DGGEERC'">
-                <label class="form-check-label" for="D3">DGGEERC</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="D4" value="dir_gral.siglas = 'DGGPI'">
-                <label class="form-check-label" for="D4">DGGPI</label>
+            <div class="col-2">
+                <div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="D5" value="dir_gral.siglas = 'DGGEERNCM'">
+                        <label class="form-check-label" for="D5">DGGEERNCM</label>
+                    </div>
+                </div>
+                <div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="D6" value="dir_gral.siglas = 'DGGOI'">
+                        <label class="form-check-label" for="D6">DGGOI</label>
+                    </div>
+                </div>
+                <div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="D7" value="dir_gral.siglas = 'DGIE'">
+                        <label class="form-check-label" for="D7">DGIE</label>
+                    </div>
+                </div>
+                <div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="D8" value="dir_gral.siglas = 'DGGPITA'">
+                        <label class="form-check-label" for="D8">DGGPITA</label>
+                    </div>
+                </div>
             </div>
         </div>
-        <div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="D5" value="dir_gral.siglas = 'DGGEERNCM'">
-                <label class="form-check-label" for="D5">DGGEERNCM</label>
+        <div class="row">
+            <div class="col"> </div>
+            <div class="col-3">
+                <input id="con_tip" type="text" name="ta" hidden /><!--input oculto sirve para mandar las condiciones de tipo ingreso-->
+                <input id="con_dg" type="text" name="dg" hidden /><!--input oculto sirve para mandar las condiciones de direccion general-->
+                <input id="r_con" type="submit" class="btn btn-primary" value="Realizar consulta" />
             </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="D6" value="dir_gral.siglas = 'DGGOI'">
-                <label class="form-check-label" for="D6">DGGOI</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="D7" value="dir_gral.siglas = 'DGIE'">
-                <label class="form-check-label" for="D7">DGIE</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="D8" value="dir_gral.siglas = 'DGGPITA'">
-                <label class="form-check-label" for="D8">DGGPITA</label>
-            </div>
+            <div class="col"> </div>
         </div>
-    </div>
-    <div>
-        <input id="con_tip" type="text" name="ta" hidden /><!--input oculto sirve para mandar las condiciones de tipo ingreso-->
-        <input id="con_dg" type="text" name="dg" hidden /><!--input oculto sirve para mandar las condiciones de direccion general-->
-        <input id="r_con" type="submit" class="btn btn-primary" value="Realizar consulta" />
     </div>
 </form>
 <!--<ul id="con_tipingre" class="list_g" hidden></ul>-->

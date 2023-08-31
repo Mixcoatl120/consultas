@@ -39,7 +39,7 @@ def users():
     conn = conexion()
     cursor = conn.cursor()
 
-    #consulta inicial 
+    #consulta inicial esto es para la tabla que se visualiza en html 
     con_inicial = "SELECT" + \
     " seguimiento.fsolicitud," + \
     " cat_tipo_ingreso.tipo_ingreso," + \
@@ -84,15 +84,15 @@ def users():
     #string con condiciones para la funcion de exportar excel
     con_where = con_fechas + " " +con_tipoingreso + " " + con_materia + " " + con_dirgeneral
     
-    print("")
-    print("")
-    print(query)
-    print("")
-    print("")
+    #print("")
+    #print("")
+    #print(query)
+    #print("")
+    #print("")
 
     #funcion para realizar una consulta y crear un archivo en excel para su descarga
     imp_excel(con_where)
-
+    #
     cursor.execute(query)
     users = cursor.fetchall()       
 
