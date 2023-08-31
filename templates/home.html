@@ -6,13 +6,13 @@
 <head>
     <script defer src="{{ url_for('static', filename='js/fun_home.js') }}"></script>
 </head>
-<h1>Consultas </h1>
+<p class="h2"><strong>Consultas SISET</strong></p>
 <p>Elige las entradas que se necesitan para la consulta</p>
 <form id="1" method="post" action="/consulta">
     <div class="container-xl">
         <div class="row mt-4">
             <div class="col">
-                <h2>Fecha</h2>
+                <p class="h4"><strong>Fecha</strong></p>
             </div>
             <div>
                 <label for="inicial">Desde</label>
@@ -117,16 +117,12 @@
             </div>
         </div>
         <div class="row">
-            <div class="col"> </div>
-            <div class="col-3">
+            <div class="col-1 mt-3">
                 <input id="con_tip" type="text" name="ta" hidden /><!--input oculto sirve para mandar las condiciones de tipo ingreso-->
                 <input id="con_dg" type="text" name="dg" hidden /><!--input oculto sirve para mandar las condiciones de direccion general-->
                 <input id="r_con" type="submit" class="btn btn-primary" value="Realizar consulta" />
             </div>
-            <div class="col"> </div>
         </div>
     </div>
 </form>
-<!--<ul id="con_tipingre" class="list_g" hidden></ul>-->
-
 {% endblock %}

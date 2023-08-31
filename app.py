@@ -21,6 +21,7 @@ bootstrap = Bootstrap(app)
 #Home
 @app.route('/', methods=('GET','POST'))# pagina de inicio con el metodo post y get para obtener la informacioan de
 def home():
+
     return render_template('home.html')
 
 
@@ -67,8 +68,7 @@ def users():
     #string con la condicion de fecha
     con_fechas = "(seguimiento.fsolicitud >= " + "'" + f1 + "'" + " and seguimiento.fsolicitud <= " + "'" + f2 + "')"
     #string con condiciones tipo de ingreso
-    con_tipoingreso = ti
-    if con_tipoingreso != "":
+    if ti != "":
         con_tipoingreso = ti +")"
     #string con dicion de materia
     if mat != "":
