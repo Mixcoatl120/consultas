@@ -42,6 +42,7 @@ def home():
 
 @app.route('/consulta', methods=('GET','POST'))
 def users():
+    con_tipoingreso = ""
     if request.method == 'POST':
         f1 = request.form['fecha_inicial'] #variable de fecha inicial
         f2 = request.form['fecha_final']# variable de fecha final
@@ -83,7 +84,6 @@ def users():
     # string con la condicion de fecha
     con_fechas = "(seguimiento.fsolicitud >= " + "'" + f1 + "'" + " and seguimiento.fsolicitud <= " + "'" + f2 + "')"
     # string con condiciones tipo de ingreso
-    con_tipoingreso = ti
     if ti != "":
         con_tipoingreso = ti +")"
     # string con dicion de materia
