@@ -23,22 +23,21 @@
 
         <div class="row mt-4">
             <div class="col">
+                {% for tingreso in tip_ingr %}
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="Asunto" value="cat_tipo_ingreso.tipo_ingreso = 'ASUNTO'" name="asunto">
-                    <label class="form-check-label" for="Asunto">Tramite</label>
+                    <input class="form-check-input" type="checkbox" value="{{ tingreso[0] }}" id="tip_ing">
+                    <label class="form-check-label" for="tip_ing">{{ tingreso[0] }}</label>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="Tramite" value="cat_tipo_ingreso.tipo_ingreso = 'TRAMITE'" name="tramite">
-                    <label class="form-check-label" for="Tramite">Asunto</label>
-                </div>
+                {% endfor %}
             </div>
         </div>
 
         <div class="row mt-4">
             <div class="col-5">
                 <select class="form-select" aria-label="Default select example" name="materia">
+                    <option selected>TODO</option>
                     {% for item in items %}
-                    <option value="{{ item[0] }}">{{ item[1] }}</option>
+                    <option value="{{ item[0] }}">{{ item[0] }}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -46,56 +45,12 @@
 
         <div class="row mt-4">
             <div class="col-1">
-                <div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="D1" value="dir_gral.siglas = 'DGGC'">
-                        <label class="form-check-label" for="D1">DGGC</label>
-                    </div>
+                {% for gen in dir_gen %}
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" value="{{ gen[0] }}" id="tip_ing">
+                    <label class="form-check-label" for="tip_ing">{{ gen[0] }}</label>
                 </div>
-                <div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="D2" value="dir_gral.siglas = 'DGGTA'">
-                        <label class="form-check-label" for="D2">DGGTA</label>
-                    </div>
-                </div>
-                <div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="D3" value="dir_gral.siglas = 'DGGEERC'">
-                        <label class="form-check-label" for="D3">DGGEERC</label>
-                    </div>
-                </div>
-                <div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="D4" value="dir_gral.siglas = 'DGGPI'">
-                        <label class="form-check-label" for="D4">DGGPI</label>
-                    </div>
-                </div>
-            </div>
-            <div class="col-2">
-                <div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="D5" value="dir_gral.siglas = 'DGGEERNCM'">
-                        <label class="form-check-label" for="D5">DGGEERNCM</label>
-                    </div>
-                </div>
-                <div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="D6" value="dir_gral.siglas = 'DGGOI'">
-                        <label class="form-check-label" for="D6">DGGOI</label>
-                    </div>
-                </div>
-                <div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="D7" value="dir_gral.siglas = 'DGIE'">
-                        <label class="form-check-label" for="D7">DGIE</label>
-                    </div>
-                </div>
-                <div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="D8" value="dir_gral.siglas = 'DGGPITA'">
-                        <label class="form-check-label" for="D8">DGGPITA</label>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
         <div class="row mt-3">

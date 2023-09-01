@@ -23,7 +23,7 @@ boton.addEventListener('click', function () {
                 }
                 else {
                     tip_dir_gen = tip_dir_gen + " or " + e.value;
-                }
+                }   
             }
 
         }
