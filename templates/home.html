@@ -37,26 +37,9 @@
         <div class="row mt-4">
             <div class="col-5">
                 <select class="form-select" aria-label="Default select example" name="materia">
-                    <option selected></option>
-                    <option value="ATMOSFERA">ATMOSFERA</option>
-                    <option value="CAMBIO DE USO DE SUELO">CAMBIO DE USO DE SUELO</option>
-                    <option value="IMPACTO AMBIENTAL">IMPACTO AMBIENTAL</option>
-                    <option value="LINEA BASE AMBIENTAL">LINEA BASE AMBIENTAL</option>
-                    <option value="RIESGO AMBIENTAL">RIESGO AMBIENTAL</option>
-                    <option value="TERCEROS">TERCEROS</option>
-                    <option value="RESIDUOS">RESIDUOS</option>
-                    <option value="SITIOS CONTAMINADOS">SITIOS CONTAMINADOS</option>
-                    <option value="SEGUROS">SEGUROS</option>
-                    <option value="SASISOPA">SASISOPA</option>
-                    <option value="AVISOS DE POZOS">AVISOS DE POZOS</option>
-                    <option value="AUDITORIA AMBIENTAL">AUDITORIA AMBIENTAL</option>
-                    <option value="RESIDUOS MANEJO ESPECIAL">RESIDUOS MANEJO ESPECIAL</option>
-                    <option value="INDUSTRIA LIMPIA">INDUSTRIA LIMPIA</option>
-                    <option value="CIERRE, DESMANTELAMIENTO Y ABANDONO">CIERRE, DESMANTELAMIENTO Y ABANDONO</option>
-                    <option value="PROTOCOLO DE RESPUESTA A EMERGENCIA">PROTOCOLO DE RESPUESTA A EMERGENCIA</option>
-                    <option value="EXPENDIO SIMULTANEO">EXPENDIO SIMULTANEO</option>
-                    <option value="METANO">METANO</option>
-                    <option value="NORMAS">NORMAS</option>
+                    {% for item in items %}
+                    <option value="{{ item[0] }}">{{ item[1] }}</option>
+                    {% endfor %}
                 </select>
             </div>
         </div>

@@ -21,7 +21,17 @@ bootstrap = Bootstrap(app)
 #Home
 @app.route('/', methods=('GET','POST'))# pagina de inicio con el metodo post y get para obtener la informacioan de
 def home():
-    return render_template('home.html')
+    # conexion con la db 
+    conn = conexion()
+    cursor = conn.cursor()
+    # consulta a la db
+    cursor.execute('SELECT ***,*** FORM ****')
+    items = cursor.fetchall()
+    # cierre de la db
+    cursor.close()
+    conn.close()
+    
+    return render_template('home.html',items=items)
 
 
 @app.route('/consulta', methods=('GET','POST'))
@@ -29,12 +39,12 @@ def users():
     if request.method == 'POST':
         f1 = request.form['fecha_inicial'] #variable de fecha inicial
         f2 = request.form['fecha_final']# variable de fecha final
-        mat = request.form['materia']#variable de materia
-        ti = request.form['ta']#variable con condiciones de tipo de asunto
-        dg = request.form['dg']#variables con condiciones de direccion general
+        mat = request.form['materia']# variable de materia
+        ti = request.form['ta']# variable con condiciones de tipo ingreso
+        dg = request.form['dg']# variables con condiciones de direccion general
 
         print(ti)
-        #print(dg)  
+        print(dg)  
 
     conn = conexion()
     cursor = conn.cursor()
@@ -64,28 +74,28 @@ def users():
     " LEFT JOIN cat_estatus ON seguimiento.estatus_tramite = cat_estatus.id" + \
     " WHERE"
 
-    #string con la condicion de fecha
+    # string con la condicion de fecha
     con_fechas = "(seguimiento.fsolicitud >= " + "'" + f1 + "'" + " and seguimiento.fsolicitud <= " + "'" + f2 + "')"
-    #string con condiciones tipo de ingreso
+    # string con condiciones tipo de ingreso
     con_tipoingreso = ti
-    if con_tipoingreso != "":
+    if ti != "":
         con_tipoingreso = ti +")"
-    #string con dicion de materia
+    # string con dicion de materia
     if mat != "":
         con_materia = "and cat_materia.materia ='" + mat + "'"
     else:
         con_materia = ""
-    #string con las condiciones de direccion general
+    # string con las condiciones de direccion general
     con_dirgeneral = dg
-    if con_dirgeneral !="":
+    if dg !="":
         con_dirgeneral =dg + ")"
-    #string con la sentencia final completa
+    # string con la sentencia final completa
     query = con_inicial + " " + con_fechas + " " +con_tipoingreso + " " + con_materia + " " + con_dirgeneral
-    #string con condiciones para la funcion de exportar excel
+    # string con condiciones para la funcion de exportar excel
     con_where = con_fechas + " " +con_tipoingreso + " " + con_materia + " " + con_dirgeneral
     
-    #print("")
-    #print("")
+    print("")
+    print("")
     print(query)
     print("")
     print("")
