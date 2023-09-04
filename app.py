@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, url_for, send_file
 from flask_bootstrap import Bootstrap
 import psycopg2
+import datetime
 from Funciones import imp_excel
 #Credenciales para la coneccion de la base de datos.
 db_config = {
@@ -118,6 +119,11 @@ def users():
 
 @app.route('/download')
 def Download_File():
+    # Get the current date
+    current_date = datetime.date.today()
+    # Print the current date
+    print("Current Date:", current_date)
+
     #ruta para descargar el archivo
     PATH='source/Consulta.xlsx'
     return send_file(PATH,as_attachment=True)
