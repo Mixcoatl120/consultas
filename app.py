@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, url_for, send_file
 from flask_bootstrap import Bootstrap
 import psycopg2
-import datetime
 from Funciones import imp_excel
 #Credenciales para la coneccion de la base de datos.
 db_config = {
