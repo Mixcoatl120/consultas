@@ -21,21 +21,28 @@ bootstrap = Bootstrap(app)
 #Home
 @app.route('/', methods=('GET','POST'))# pagina de inicio con el metodo post y get para obtener la informacioan de
 def home():
-    # conexion con la db 
+   # conexion con la db 
     conn = conexion()
     cursor = conn.cursor()
-    # consulta a la db
-    cursor.execute('SELECT ***,*** FORM ****')
+    # consultas a la db
+    cursor.execute("SELECT materia FROM cat_materia")
     items = cursor.fetchall()
+    #
+    cursor.execute("SELECT tipo_ingreso FROM cat_tipo_ingreso order by id")
+    tip_ingr = cursor.fetchall()
+    #
+    cursor.execute("select siglas from cat_dirgeneral where cve_unidad = 2")
+    dir_gen = cursor.fetchall()
     # cierre de la db
     cursor.close()
     conn.close()
     
-    return render_template('home.html',items=items)
+    return render_template('home.html', items=items, tip_ingr=tip_ingr,dir_gen=dir_gen)
 
 
 @app.route('/consulta', methods=('GET','POST'))
 def users():
+    con_tipoingreso = ""
     if request.method == 'POST':
         f1 = request.form['fecha_inicial'] #variable de fecha inicial
         f2 = request.form['fecha_final']# variable de fecha final
@@ -77,18 +84,18 @@ def users():
     # string con la condicion de fecha
     con_fechas = "(seguimiento.fsolicitud >= " + "'" + f1 + "'" + " and seguimiento.fsolicitud <= " + "'" + f2 + "')"
     # string con condiciones tipo de ingreso
-    con_tipoingreso = ti
     if ti != "":
         con_tipoingreso = ti +")"
     # string con dicion de materia
-    if mat != "":
+    if mat != "TODO":
         con_materia = "and cat_materia.materia ='" + mat + "'"
     else:
         con_materia = ""
     # string con las condiciones de direccion general
-    con_dirgeneral = dg
     if dg !="":
         con_dirgeneral =dg + ")"
+    else:
+        con_dirgeneral = ""
     # string con la sentencia final completa
     query = con_inicial + " " + con_fechas + " " +con_tipoingreso + " " + con_materia + " " + con_dirgeneral
     # string con condiciones para la funcion de exportar excel
@@ -111,9 +118,14 @@ def users():
 
 @app.route('/download')
 def Download_File():
+    # Get the current date
+    current_date = datetime.date.today()
+    # Print the current date
+    print("Current Date:", current_date)
+
     #ruta para descargar el archivo
     PATH='source/Consulta.xlsx'
-    return send_file(PATH,as_attachment=True)
+    return send_file(PATH,as_attachment=True,)
 
 # inicio de la aplicacion
 if __name__ == '__main__':

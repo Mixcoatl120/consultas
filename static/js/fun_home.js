@@ -7,23 +7,23 @@ boton.addEventListener('click', function () {
     checks.forEach((e) => {
         if (e.checked == true) {
             //if para separar  tipo de ingreso de los checksbox
-            if (e.value == "cat_tipo_ingreso.tipo_ingreso = 'ASUNTO'" || e.value == "cat_tipo_ingreso.tipo_ingreso = 'TRAMITE'") {
+            if (e.value == "ASUNTO" || e.value == "TRAMITE") {
                 if (tip_asunto == "") {
-                    tip_asunto = "and (" + e.value;
+                    tip_asunto = "and (cat_tipo_ingreso.tipo_ingreso = '" + e.value + "'";
                 }
                 else {
-                    tip_asunto = tip_asunto + " or " + e.value;
+                    tip_asunto = tip_asunto + " or cat_tipo_ingreso.tipo_ingreso = '" + e.value + "'";
                 }
             }
 
             //if para separar direccion general de los checksbox
-            if (e.value != "cat_tipo_ingreso.tipo_ingreso = 'ASUNTO'" && e.value != "cat_tipo_ingreso.tipo_ingreso = 'TRAMITE'") {
+            if (e.value != "ASUNTO" && e.value != "TRAMITE") {
                 if (tip_dir_gen == "") {
-                    tip_dir_gen = "and (" + e.value;
+                    tip_dir_gen = "and (dir_gral.siglas = '" + e.value + "'";
                 }
                 else {
-                    tip_dir_gen = tip_dir_gen + " or " + e.value;
-                }
+                    tip_dir_gen = tip_dir_gen + " or dir_gral.siglas = '" + e.value + "'";
+                }   
             }
 
         }
