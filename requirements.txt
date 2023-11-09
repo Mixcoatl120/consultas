@@ -1,7 +1,7 @@
 alabaster==0.7.13
 Babel==2.12.1
 blinker==1.6.2
-bootstrap-py==2.0.0
+bootstrap-py==1.0.2
 certifi==2023.7.22
 charset-normalizer==3.2.0
 click==8.1.6
