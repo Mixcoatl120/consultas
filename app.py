@@ -1,5 +1,4 @@
 ﻿from flask import Flask, render_template, request,send_file
-from flask_bootstrap import Bootstrap
 import psycopg2
 from Funciones import imp_excel
 #Credenciales para la coneccion de la base de datos.
@@ -17,7 +16,6 @@ def conexion():
 
 #Funciones relacionados con las rutas html
 app = Flask(__name__)
-bootstrap = Bootstrap(app)
 #Home
 @app.route('/', methods=('GET','POST'))# pagina de inicio con el metodo post y get para obtener la informacioan de
 def Index():
