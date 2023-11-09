@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, send_file
+﻿from flask import Flask, render_template, request, url_for, send_file
 from flask_bootstrap import Bootstrap
 import psycopg2
 from Funciones import imp_excel
@@ -20,7 +20,7 @@ app = Flask(__name__)
 bootstrap = Bootstrap(app)
 #Home
 @app.route('/', methods=('GET','POST'))# pagina de inicio con el metodo post y get para obtener la informacioan de
-def home():
+def Index():
    # conexion con la db 
     conn = conexion()
     cursor = conn.cursor()
@@ -37,7 +37,7 @@ def home():
     cursor.close()
     conn.close()
     
-    return render_template('home.html', items=items, tip_ingr=tip_ingr,dir_gen=dir_gen)
+    return render_template('index.html', items=items, tip_ingr=tip_ingr,dir_gen=dir_gen)
 
 
 @app.route('/consulta', methods=('GET','POST'))
@@ -129,4 +129,4 @@ def Download_File():
 
 # inicio de la aplicacion
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
