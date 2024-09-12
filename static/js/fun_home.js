@@ -1,4 +1,4 @@
-﻿// JavaScript source code
+// JavaScript source code
 var boton = document.getElementById('r_con');
 var checks = document.querySelectorAll('.form-check-input');
 var tip_asunto = "";

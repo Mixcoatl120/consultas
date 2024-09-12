@@ -1,4 +1,4 @@
-﻿import pandas as pd
+import pandas as pd
 import openpyxl
 import psycopg2
 
@@ -7,7 +7,7 @@ import psycopg2
 db_config = {
     'dbname': 'siset',
     'user': 'postgres',
-    'password': 'Asea2023',
+    'password': 'Mixcoatl120.',
     'host': 'localhost',
     'port': '5432'
 }

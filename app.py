@@ -1,41 +1,22 @@
-﻿from flask import Flask, render_template, request,send_file
+from flask import Flask, render_template, request,send_file
 import psycopg2
 from Funciones import imp_excel
-
-#Credenciales para la coneccion de la base de datos.
-db_config = {
-    'dbname': 'siset',
-    'user': 'postgres',
-    'password': 'Asea2023',
-    'host': 'localhost',
-    'port': '5432'
-}
-#estableciondo la coneccion.
-def conexion():
-    conn = psycopg2.connect(**db_config)
-    return conn
+from dbModel import * 
 
 #Funciones relacionados con las rutas html
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'Jvm2OrrMd4QaRNHzvtgqfxyLir8'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Mixcoatl120.@localhost/siset'
+
+# database
+db.init_app(app)
 #Home
 @app.route('/', methods=('GET','POST'))# pagina de inicio con el metodo post y get para obtener la informacioan de
 def Index():
-   # conexion con la db 
-    conn = conexion()
-    cursor = conn.cursor()
     # consultas a la db
-    cursor.execute("SELECT materia FROM cat_materia")
-    items = cursor.fetchall()
-    #
-    cursor.execute("SELECT tipo_ingreso FROM cat_tipo_ingreso order by id")
-    tip_ingr = cursor.fetchall()
-    #
-    cursor.execute("select siglas from cat_dirgeneral where cve_unidad = 2")
-    dir_gen = cursor.fetchall()
-    # cierre de la db
-    cursor.close()
-    conn.close()
-    
+    items =  Materia.query.all() # consulta a materia.
+    tip_ingr = Tip_ing.query.order_by(Tip_ing.id).all() # consulta a tipo ingreso
+    dir_gen = Dir_Gen.query.filter_by(cve_unidad = 2).all() # consuta a direccion general
     return render_template('index.html', items=items, tip_ingr=tip_ingr,dir_gen=dir_gen)
 
 
@@ -50,64 +31,53 @@ def users():
         dg = request.form['dg']# variables con condiciones de direccion general
 
         print(ti)
-        print(dg)  
-
-    conn = conexion()
-    cursor = conn.cursor()
+        print(dg)
+        print(mat)  
 
     #consulta inicial esto es para la tabla que se visualiza en html 
-    con_inicial = "SELECT" + \
-    " seguimiento.fsolicitud," + \
-    " cat_tipo_ingreso.tipo_ingreso," + \
-    "seguimiento.bitacora_expediente," + \
-    " cat_materia.materia," + \
-    " seguimiento.rnomrazonsolcial," + \
-    " dir_gral.siglas," + \
-    " cat_estatus.estatus" + \
-    " FROM seguimiento" + \
-    " LEFT JOIN cat_tipo_ingreso ON seguimiento.tipo_ingreso = cat_tipo_ingreso.id" + \
-    " LEFT JOIN cat_tipo_asunto ON seguimiento.tipo_asunto = cat_tipo_asunto.id" + \
-    " LEFT JOIN cat_descripcion ON seguimiento.descripcion = cat_descripcion.id" + \
-    " LEFT JOIN cat_materia ON seguimiento.materia = cat_materia.id" + \
-    " LEFT JOIN cat_tramites ON seguimiento.tramite = cat_tramites.idtram" + \
-    " LEFT JOIN cat_tipoinstalacion  ON seguimiento.tipoinstalacion = cat_tipoinstalacion.id" + \
-    " LEFT JOIN cat_actividad ON seguimiento.cve_actividad = cat_actividad.id" + \
-    " LEFT JOIN cat_personal AS evaluador ON seguimiento.nevaluador = evaluador.idpers" + \
-    " LEFT JOIN cat_personal AS aar ON seguimiento.persona_ingresa = aar.idpers" +\
-    " LEFT JOIN dir_gral ON seguimiento.dirgralfirma = dir_gral.id" + \
-    " LEFT JOIN cat_sitact ON seguimiento.situacionactualtram = cat_sitact.id" + \
-    " LEFT JOIN cat_sentido_resolucion ON seguimiento.sentido_resolucion = cat_sentido_resolucion.id" + \
-    " LEFT JOIN cat_estatus ON seguimiento.estatus_tramite = cat_estatus.id" + \
-    " WHERE"
-
+    resultados = (db.session.query(
+        Seguimiento.fsolicitud,
+        Tip_ing.tipo_ingreso,
+        Seguimiento.bitacora_expediente,
+        Materia.materia,
+        Seguimiento.rnomrazonsolcial,
+        Dir_Gen.siglas,
+        Estatus.estatus
+    ).join(Tip_ing,Seguimiento.tipo_ingreso == Tip_ing.id)
+    .join(Asunto,Seguimiento.tipo_asunto == Asunto.id)
+    .join(Descripcion,Seguimiento.descripcion == Descripcion.id)
+    .join(Materia,Seguimiento.materia == Materia.id)
+    .join(Tramite,Seguimiento.tramite == Tramite.idtram)
+    .join(Dir_Gen,Seguimiento.dirgralfirma == Dir_Gen.id)
+    .join(Estatus,Seguimiento.estatus_tramite == Estatus.id)
+    .filter(Seguimiento.fsolicitud >= f1,Seguimiento.fsolicitud <= f2)
+    .order_by(Seguimiento.fsolicitud).all()
+    )
+    #print(resultados)
     # string con la condicion de fecha
-    con_fechas = "(seguimiento.fsolicitud >= " + "'" + f1 + "'" + " and seguimiento.fsolicitud <= " + "'" + f2 + "')"
+    #con_fechas = "(seguimiento.fsolicitud >= " + "'" + f1 + "'" + " and seguimiento.fsolicitud <= " + "'" + f2 + "')"
     # string con condiciones tipo de ingreso
-    if ti != "":
-        con_tipoingreso = ti +")"
+    #if ti != "":
+    #    con_tipoingreso = ti +")"
     # string con dicion de materia
-    if mat != "TODO":
-        con_materia = "and cat_materia.materia ='" + mat + "'"
-    else:
-        con_materia = ""
+    #if mat != "TODO":
+    #    con_materia = "and cat_materia.materia ='" + mat + "'"
+    #else:
+    #    con_materia = ""
     # string con las condiciones de direccion general
-    if dg !="":
-        con_dirgeneral =dg + ")"
-    else:
-        con_dirgeneral = ""
+    #if dg !="":
+    #    con_dirgeneral =dg + ")"
+    #else:
+    #    con_dirgeneral = ""
     # string con la sentencia final completa
-    query = con_inicial + " " + con_fechas + " " +con_tipoingreso + " " + con_materia + " " + con_dirgeneral
+    #query = str(resultados) + " " + con_fechas + " " +con_tipoingreso + " " + con_materia + " " + con_dirgeneral
+    #print(query)
     # string con condiciones para la funcion de exportar excel
-    con_where = con_fechas + " " +con_tipoingreso + " " + con_materia + " " + con_dirgeneral
+    #con_where = con_fechas + " " +con_tipoingreso + " " + con_materia + " " + con_dirgeneral
     
     #funcion para realizar una consulta y crear un archivo en excel para su descarga
-    imp_excel(con_where)
-    #
-    cursor.execute(query)
-    users = cursor.fetchall()      
-    
-    conn.close()
-    return render_template('consulta.html', users=users)
+    #imp_excel(con_where)
+    return render_template('consulta.html', resultados = resultados)
 
 @app.route('/download')
 def Download_File():

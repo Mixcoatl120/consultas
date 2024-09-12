@@ -1,4 +1,4 @@
-﻿{% extends 'base.html' %}
+{% extends 'base.html' %}
 
 {% block title %}Consultas - {{ super() }}{% endblock %}
 
@@ -47,15 +47,15 @@
                 </tr>
             </thead>
             <tbody>
-                {% for user in users %}
+                {% for r in resultados %}
                 <tr>
-                    <td>{{ user[0]}} </td><!--columna de fecha de ingreso-->
-                    <td>{{ user[1]}} </td><!--columna de tipo de ingreso-->
-                    <td>{{ user[2]}} </td><!--columna de bitacora-->
-                    <td>{{ user[3]}} </td><!--columna de materia-->
-                    <td>{{ user[4]}} </td><!--columna de razon social-->
-                    <td>{{ user[5]}} </td><!--columna de direccion general-->
-                    <td>{{ user[6]}} </td><!--columna de estatus-->
+                    <td>{{ r.fsolicitud}} </td><!--columna de fecha de ingreso-->
+                    <td>{{ r.tipo_ingreso}} </td><!--columna de tipo de ingreso-->
+                    <td>{{ r.bitacora_expediente}} </td><!--columna de bitacora-->
+                    <td>{{ r.materia}} </td><!--columna de materia-->
+                    <td>{{ r.rnomrazonsocial}} </td><!--columna de razon social-->
+                    <td>{{ r.siglas}} </td><!--columna de direccion general-->
+                    <td>{{ r.estatus}} </td><!--columna de estatus-->
                 </tr>
                 {% endfor %}
             </tbody>

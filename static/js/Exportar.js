@@ -1,4 +1,4 @@
-﻿/*
+/*
 Esta es una funcion en java script que importa los datos de la tabla que estas viendo
 solo las que estan en esa pagina de la tabla
 este esta solo en la tabla de pruebas(FAT).
