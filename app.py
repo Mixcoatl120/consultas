@@ -1,7 +1,6 @@
 ﻿from flask import Flask, render_template, request,send_file
 import psycopg2
 from Funciones import imp_excel
-import os
 
 #Credenciales para la coneccion de la base de datos.
 db_config = {
@@ -118,4 +117,4 @@ def Download_File():
 
 # inicio de la aplicacion
 if __name__ == '__main__':
-    app.run(debug=True, port=os.getenv("PORT", default=5000))
+    app.run()
